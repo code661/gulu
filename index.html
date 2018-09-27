@@ -7,10 +7,17 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>轱辘</title>
   <style>
-    * {
+    *,*::after,*::before {
       margin: 0;
       padding: 0;
       box-sizing: border-box
+    }
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
     }
 
     :root {
@@ -30,11 +37,17 @@
   </style>
 </head>
 <div id='app'>
-  <g-button></g-button>
+  <g-button orientation="right" icon="settings">
+    按钮
+  </g-button>
+  <g-button>按钮</g-button>
+  <g-button orientation="left" icon="settings">按钮</g-button>
+
 </div>
 
 <body>
   <script src="./src/app.js"></script>
+  <script src="//at.alicdn.com/t/font_853698_5n1seix9ki9.js"></script>
 </body>
 
 </html>
