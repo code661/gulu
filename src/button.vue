@@ -14,8 +14,14 @@
 <script>
 export default {
   props:{
-    icon: String,
-    orientation: String
+    icon: {},
+    orientation: {
+      type: String,
+      default: "left",
+      validator(value){
+        return ['left','right'].indexOf(value) !== -1
+      }
+    }
   }
 };
 </script>
