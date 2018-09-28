@@ -1,12 +1,9 @@
 <template>
   <button class="g-button" :class="{[`icon-${orientation}`]:true}">
-    <svg v-if="icon" class="icon" aria-hidden="true">
-      <use :xlink:href="`#i-${icon}`"></use>
-    </svg>
+    <g-icon :name="icon" v-if="icon" class="icon"></g-icon>
     <div class="content">
       <slot></slot>
     </div>
-
   </button>
   </button>
 </template>
