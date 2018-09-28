@@ -33,8 +33,8 @@
   <g-button orientation="right" icon="settings">
     按钮
   </g-button>
-  <g-button>按钮</g-button>
-  <g-button orientation="left" icon="settings">按钮</g-button>
+  <g-button :loading="loading1" @click="loading1 = !loading1">按钮</g-button>
+  <g-button :loading="loading2" @click="loading2 = !loading2" orientation="left" icon="settings">按钮</g-button>
 
 </div>
 

@@ -7,6 +7,7 @@ Vue.component('g-icon', Icon)
 new Vue({
   el: '#app',
   data:{
-    message: 'hi'
-  }
+    loading1: true,
+    loading2: false
+  },
 })
