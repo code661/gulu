@@ -3,7 +3,8 @@ import Button from './button'
 import Icon from "./Icon"
 import buttonGroup from "./buttonGroup"
 import chai from "chai"
-let expect = chai.expect
+import spies from "chai-spies"
+
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -16,6 +17,9 @@ new Vue({
     loading2: false
   },
 })
+
+let expect = chai.expect
+chai.use(spies)
 
 {
   const Constructor = Vue.extend(Button)
@@ -57,10 +61,24 @@ new Vue({
     }
   })
   button.$mount(div)
-  window.test = button.$el
   let svg = button.$el.querySelector('svg')
   let order = window.getComputedStyle(svg).order
   expect(order).to.equal("2")
   button.$el.remove()
   button.$destroy()
+}
+
+{
+  const Constructor = Vue.extend(Button)
+  const button = new Constructor({
+    propsData:{
+      icon: "settings",
+      orientation: "right"
+    }
+  })
+  button.$mount()
+  const spy = chai.spy(()=>{})
+  button.$on("click",spy)
+  button.$el.click()
+  expect(spy).to.have.not.been.called()
 }
