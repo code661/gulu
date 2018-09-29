@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/code661/gulu#readme",
   "dependencies": {
+    "chai": "^4.2.0",
     "vue": "^2.5.17",
     "vue-hot-reload-api": "^2.3.0"
   },
@@ -30,6 +31,6 @@
     "vue-template-compiler": "^2.5.17"
   },
   "alias": {
-    "vue" : "./node_modules/vue/dist/vue.common.js"
+    "vue": "./node_modules/vue/dist/vue.common.js"
   }
 }
