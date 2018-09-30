@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import Icon from "./Icon"
+import Icon from "./Icon";
 export default {
-  components:{
+  components: {
     "g-icon": Icon
   },
   props: {
     icon: {},
-    loading:{
+    loading: {
       type: Boolean,
       default: false
     },
@@ -41,22 +41,32 @@ export default {
     transform: rotate(360deg);
   }
 }
+$button-height: 32px;
+$font-size: 14px;
+$button-bg: white;
+$button-active-bg: #eee;
+$border-radius: 4px;
+$color: #333;
+$border-color: #999;
+$border-color-hover: #666;
+
 .g-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
-  font-size: var(--font-size);
-  height: var(--button-height);
-  border-radius: var(--border-radius);
+  font-size: $font-size;
+  height: $button-height;
+  border-radius: $border-radius;
   padding: 0 1em;
   border: 1px solid;
-  background: var(--button-bg);
+  border-color: $border-color;
+  background: $button-bg;
   &:hover {
-    border-color: var(--border-color-hover);
+    border-color: $border-color-hover;
   }
   &:active {
-    background-color: var(--button-active-bg);
+    background-color: $button-active-bg;
   }
   &:focus {
     outline: none;

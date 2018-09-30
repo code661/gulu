@@ -7,36 +7,35 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>轱辘</title>
   <style>
-    *,*::after,*::before {
+    *,
+    *::after,
+    *::before {
       margin: 0;
       padding: 0;
       box-sizing: border-box
     }
-
-    :root {
-      --button-height: 32px;
-      --font-size: 14px;
-      --button-bg: white;
-      --button-active-bg: #eee;
-      --border-radius: 4px;
-      --color: #333;
-      --border-color: #999999;
-      --border-color-hover:#666;
-    }
-
     #app {
       margin: 20px;
+    }
+
+    .box {
+      margin-top: 20px
     }
   </style>
 </head>
 <div id='app'>
-  <g-button orientation="right" icon="settings">按钮</g-button>
-  <g-button :loading="loading2" @click="loading2 = !loading2" orientation="left" icon="settings">按钮</g-button>
-  <g-button-group>
-    <g-button icon="left">上一页</g-button>
-    <g-button >更多</g-button>
-    <g-button orientation="right" icon="right">下一页</g-button>
-  </g-button-group>
+  <div class="box">
+    <g-input></g-input>
+  </div>
+  <div class="box">
+    <g-button orientation="right" icon="settings">按钮</g-button>
+    <g-button :loading="loading2" @click="loading2 = !loading2" orientation="left" icon="settings">按钮</g-button>
+    <g-button-group>
+      <g-button icon="left">上一页</g-button>
+      <g-button>更多</g-button>
+      <g-button orientation="right" icon="right">下一页</g-button>
+    </g-button-group>
+  </div>
 </div>
 
 <body>
