@@ -21,11 +21,17 @@
     .box {
       margin-top: 20px
     }
+
+    .box > * {
+      margin-top: 10px
+    }
   </style>
 </head>
 <div id='app'>
   <div class="box">
-    <g-input></g-input>
+    <g-input value="你好"></g-input>
+    <g-input value="你好" disabled></g-input>
+    <g-input value="你好" error="密码太长"></g-input>
   </div>
   <div class="box">
     <g-button orientation="right" icon="settings">按钮</g-button>
@@ -40,7 +46,6 @@
 
 <body>
   <script src="./src/app.js"></script>
-  <script src="//at.alicdn.com/t/font_853698_xo7a8i61yg.js"></script>
 </body>
 
 </html>
