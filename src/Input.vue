@@ -1,6 +1,12 @@
 <template>
   <div class="wrapper" :class="{error:error}">
-    <input type="text" :value="value" :disabled="disabled" :readOnly="readonly">
+    <input type="text"
+      :value="value" :disabled="disabled" :readOnly="readonly"
+      @change="$emit('change', $event.target.value)"
+      @blur="$emit('blur', $event.target.value)"
+      @input="$emit('input', $event.target.value)"
+      @focus="$emit('focus', $event.target.value)"
+    >
     <template v-if="error">
       <g-icon class="error-msg icon" name="warning-ring"></g-icon>
       <span class="error-msg content">{{error}}</span>
@@ -9,7 +15,11 @@
 </template>
 
 <script>
+import Icon from "./Icon"
 export default {
+  components:{
+    "g-icon": Icon
+  },
   props: {
     value: String,
     disabled: {
@@ -28,7 +38,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$height: 32px;
 $border-radius: 4px;
 $border-color: #999;
 $font-size: 12px;
@@ -41,7 +50,6 @@ $error-red: #ed4014;
   display: inline-flex;
   align-items: center;
   > input {
-    height: $height;
     border-radius: $border-radius;
     border: 1px solid $border-color;
     padding: 0.6em;
