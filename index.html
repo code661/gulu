@@ -15,34 +15,29 @@
       box-sizing: border-box
     }
     #app {
-      margin: 20px;
+      overflow: auto;
     }
 
-    .box {
-      margin-top: 20px
-    }
-
-    .box > * {
-      margin-top: 10px
-    }
   </style>
 </head>
 <div id='app'>
-  <div class="box">
-    <g-input value="你好"></g-input>
-    <g-input value="你好" disabled></g-input>
-    <g-input value="你好" readonly></g-input>
-    <g-input value="你好" error="密码太长"></g-input>
-  </div>
-  <div class="box">
-    <g-button orientation="right" icon="settings">按钮</g-button>
-    <g-button :loading="loading2" @click="loading2 = !loading2" orientation="left" icon="settings">按钮</g-button>
-    <g-button-group>
-      <g-button icon="left">上一页</g-button>
-      <g-button>更多</g-button>
-      <g-button orientation="right" icon="right">下一页</g-button>
-    </g-button-group>
-  </div>
+  <g-row gutter="20">
+    <g-col span="2">
+      <g-row align="left">
+        <g-col span="2">1</g-col>
+        <g-col span="2">2</g-col>
+        <g-col span="2">3</g-col>
+        <g-col span="2">4</g-col>
+      </g-row>
+    </g-col>
+    <g-col span="3">1
+    </g-col>
+    <g-col span="4">1
+    </g-col>
+    <g-col span="15">1
+    </g-col>
+  </g-row>
+</div>
 </div>
 
 <body>
