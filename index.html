@@ -14,27 +14,20 @@
       padding: 0;
       box-sizing: border-box
     }
+
     #app {
       overflow: auto;
     }
 
+    .box {
+      border: 1px solid;
+    }
   </style>
 </head>
 <div id='app'>
-  <g-row gutter="20">
-    <g-col span="2">
-      <g-row align="left">
-        <g-col span="2">1</g-col>
-        <g-col span="2">2</g-col>
-        <g-col span="2">3</g-col>
-        <g-col span="2">4</g-col>
-      </g-row>
-    </g-col>
-    <g-col span="3">1
-    </g-col>
-    <g-col span="4">1
-    </g-col>
-    <g-col span="15">1
+  <g-row>
+    <g-col span="24" :pad="{span:12}" :narrow-pc="{span:8}" :wide-pc="{span:3}" :ultra-wide-pc={span:2}>
+      <div class="box">1</div>
     </g-col>
   </g-row>
 </div>
