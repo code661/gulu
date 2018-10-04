@@ -38,6 +38,18 @@ export default {
     widePc: { type: Object, validator },
     ultraWidePc: { type: Object, validator }
   },
+  methods: {
+    createColClass(obj = {}, prefixStr = "") {
+      let tempArray = [];
+      if (obj.span) {
+        tempArray.push(`${prefixStr}col-${obj.span}`);
+      }
+      if (obj.offset || obj.offset == 0) {
+        tempArray.push(`${prefixStr}offset-${obj.offset}`);
+      }
+      return tempArray;
+    }
+  },
   computed: {
     colStyle() {
       let { gutter } = this;
@@ -47,15 +59,14 @@ export default {
       };
     },
     colClasses() {
-      let { span, offset, pad, narrowPc, pc, widePc, ultraWidePc } = this;
+      let { createColClass, span, offset, pad, narrowPc, pc, widePc, ultraWidePc } = this;
       return [
-        span && `col-${span}`,
-        offset && `offset-${offset}`,
-        ...(pad ? [`pad-col-${pad.span}`] : []),
-        ...(narrowPc ? [`narrowPc-col-${narrowPc.span}`] : []),
-        ...(pc ? [`pc-col-${pc.span}`] : []),
-        ...(widePc ? [`widePc-col-${widePc.span}`] : []),
-        ...(ultraWidePc ? [`ultraWidePc-col-${ultraWidePc.span}`] : [])
+        ...createColClass({ span, offset }, ""),
+        ...createColClass(pad, "pad-"),
+        ...createColClass(narrowPc, "narrowPc-"),
+        ...createColClass(pc, "pc-"),
+        ...createColClass(widePc, "widePc-"),
+        ...createColClass(ultraWidePc, "ultraWidePc-")
       ];
     }
   }
@@ -86,7 +97,7 @@ export default {
     }
 
     $class-prefix: pad-offset-;
-    @for $n from 1 through 24 {
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: ($n / 24) * 100%;
       }
@@ -102,7 +113,7 @@ export default {
     }
 
     $class-prefix: narrowPc-offset-;
-    @for $n from 1 through 24 {
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: ($n / 24) * 100%;
       }
@@ -118,7 +129,7 @@ export default {
     }
 
     $class-prefix: pc-offset-;
-    @for $n from 1 through 24 {
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: ($n / 24) * 100%;
       }
@@ -134,7 +145,7 @@ export default {
     }
 
     $class-prefix: widePc-offset-;
-    @for $n from 1 through 24 {
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: ($n / 24) * 100%;
       }
@@ -150,7 +161,7 @@ export default {
     }
 
     $class-prefix: ultraWidePc-offset-;
-    @for $n from 1 through 24 {
+    @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: ($n / 24) * 100%;
       }
