@@ -12,24 +12,18 @@
     *::before {
       margin: 0;
       padding: 0;
-      box-sizing: border-box
-    }
-
-    #app {
-      overflow: auto;
-    }
-
-    .box {
-      border: 1px solid;
+      box-sizing: border-box;
+      text-align: center;
     }
   </style>
 </head>
 <div id='app'>
-  <g-row>
-    <g-col span="24" :pad="{span:12}" :narrow-pc="{span:8}" :wide-pc="{span:3}" :ultra-wide-pc={span:2}>
-      <div class="box">1</div>
-    </g-col>
-  </g-row>
+  <g-layout style="height: 100vh;">
+    <g-header>Header</g-header>
+    <g-content>Content</g-content>
+    <g-footer>Footer</g-footer>
+  </g-layout>
+
 </div>
 </div>
 
