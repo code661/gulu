@@ -10,7 +10,10 @@ import Header from "./Header"
 import Content from "./Content"
 import Footer from "./Footer"
 import Sider from "./Sider"
+import Toast from "./Toast"
+import plugin from "./plugin"
 
+Vue.use(plugin)
 Vue.component("g-button", Button);
 Vue.component("g-icon", Icon);
 Vue.component("g-button-group", buttonGroup);
@@ -19,9 +22,10 @@ Vue.component("g-row", Row);
 Vue.component("g-col", Col);
 Vue.component("g-layout", Layout);
 Vue.component("g-header", Header);
+Vue.component("g-sider", Sider);
 Vue.component("g-content", Content);
 Vue.component("g-footer", Footer);
-Vue.component("g-sider", Sider);
+Vue.component("g-toast", Toast);
 
 
 new Vue({
@@ -29,5 +33,19 @@ new Vue({
   data: {
     loading1: true,
     loading2: false
+  },
+  methods:{
+    test(){
+      this.$toast('hello',{
+        autoClose: false,
+        autoCloseDelay: 2,
+        closeButton:{
+          text: "关闭我",
+          callBack: function(toast){
+            console.log("test..")
+          }
+        }
+      })
+    }
   }
 });
