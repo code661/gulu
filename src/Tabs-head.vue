@@ -26,7 +26,6 @@ export default {
   height: $tab-head-height;
   border-bottom: 1px solid #dbe2e8;
   align-items: center;
-  margin-bottom: .5em;
   font-size: $tab-font-size;
   padding-right: 16px;
   > .active-bar {
@@ -35,7 +34,6 @@ export default {
     left: 0;
     height: 2px;
     background-color: #292929;
-    width: 64px;
     transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
   > .actions-wrap {

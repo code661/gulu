@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="xxx" :class="{active: isActive}">
+  <div class="tabs-item" @click="handleClickTab" :class="tabItemClasses">
     <slot></slot>
   </div>
 </template>
@@ -18,28 +18,49 @@ export default {
       isActive: false
     };
   },
-  inject: ["eventBus"],
+  inject: ["eventBus", "direction"],
   methods: {
-    xxx() {
+    handleClickTab() {
       this.eventBus.$emit("update:selected", this.name);
-      this.setBarPosition()
+      this.setBarPosition();
     },
     setBarPosition() {
-      let { left, width } = this.$el.getBoundingClientRect();
+      // 获取样式
+      let { left, width, height, top } = this.$el.getBoundingClientRect();
+      let { left: parentLeft, top: parentTop } = this.$parent.$el.getBoundingClientRect();
+      // 修正偏移
+      left -= parentLeft;
+      top -= parentTop;
+      // 设置样式
       let activeBar = this.$parent.$refs.activeBar;
-      activeBar.style.width = width + "px";
-      activeBar.style.transform = `translateX(${left}px)`;
+      switch (this.direction) {
+        case "vertical":
+          activeBar.style.height = height + "px";
+          activeBar.style.transform = `translateY(${top}px)`;
+          break;
+        case "horizontal":
+          activeBar.style.width = width + "px";
+          activeBar.style.transform = `translateX(${left}px)`;
+          break;
+      }
     }
   },
   created() {
     this.eventBus.$on("update:selected", name => {
       if (this.name === name) {
         this.isActive = true;
-        this.setBarPosition()
+        this.setBarPosition();
       } else {
         this.isActive = false;
       }
     });
+  },
+  computed: {
+    tabItemClasses() {
+      return {
+        active: this.isActive
+      };
+    }
   },
   mounted() {}
 };

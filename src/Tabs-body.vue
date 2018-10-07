@@ -12,5 +12,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.tabs-body {
+  margin-top: 1em;
+}
 </style>
