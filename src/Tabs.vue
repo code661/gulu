@@ -24,6 +24,11 @@ export default {
       eventBus: this.eventBus
     }
   },
+  created(){
+    this.eventBus.$on("update:selected",(name)=>{
+      this.$emit("update:selected", name)
+    })
+  },
   mounted(){
     this.eventBus.$emit("update:selected", this.selected)
   }
