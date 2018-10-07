@@ -12,6 +12,13 @@ import Footer from "./Footer"
 import Sider from "./Sider"
 import Toast from "./Toast"
 import plugin from "./plugin"
+import Tabs from "./Tabs"
+import TabsHead from "./Tabs-head"
+import TabsItem from "./Tabs-item"
+import TabsBody from "./Tabs-body"
+import TabsPane from "./Tabs-pane"
+
+
 
 Vue.use(plugin)
 Vue.component("g-button", Button);
@@ -26,26 +33,20 @@ Vue.component("g-sider", Sider);
 Vue.component("g-content", Content);
 Vue.component("g-footer", Footer);
 Vue.component("g-toast", Toast);
-
+Vue.component("g-tabs-head", Tabs);
+Vue.component("g-tabs", Tabs);
+Vue.component("g-tabs-head", TabsHead);
+Vue.component("g-tabs-body", TabsBody);
+Vue.component("g-tabs-item", TabsItem);
+Vue.component("g-tabs-pane", TabsPane);
 
 new Vue({
   el: "#app",
   data: {
     loading1: true,
-    loading2: false
+    loading2: false,
+    selectedTab: "sport"
   },
   methods:{
-    test(){
-      this.$toast('hello',{
-        autoClose: false,
-        autoCloseDelay: 2,
-        closeButton:{
-          text: "关闭我",
-          callBack: function(toast){
-            console.log("test..")
-          }
-        }
-      })
-    }
   }
 });
