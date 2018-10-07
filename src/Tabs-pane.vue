@@ -33,6 +33,5 @@ export default {
 
 <style lang="scss" scoped>
 .active{
-  background-color: red;
 }
 </style>
