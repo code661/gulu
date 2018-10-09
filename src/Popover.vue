@@ -19,34 +19,43 @@ export default {
   methods: {
     onClick(event) {
       if (this.$refs.trigger.contains(event.target)) {
-        this.visible = !this.visible;
         if (this.visible === true) {
-          let callBack = e => {
-            if (
-              !(
-                this.$refs.content.contains(e.target) ||
-                this.$refs.content === e.target
-              )
-            ) {
-              this.visible = false;
-              document.removeEventListener("click", callBack);
-            }
-          };
-          this.$nextTick(() => {
-            document.addEventListener("click", callBack);
-
-            let {
-              left,
-              top,
-              height,
-              width
-            } = this.$refs.trigger.getBoundingClientRect();
-            document.body.appendChild(this.$refs.content);
-            this.$refs.content.style.top = window.scrollY + top + height + "px";
-            this.$refs.content.style.left = window.scrollX + left + "px";
-          });
+          this.closeContent();
+        } else {
+          this.openContent();
         }
       }
+    },
+    onClickDocument(event) {
+      if (
+        this.$refs.content.contains(event.target) ||
+        this.$refs.trigger.contains(event.target)
+      ) {
+        return;
+      }
+      this.closeContent();
+    },
+    openContent() {
+      this.visible = true;
+      this.$nextTick(() => {
+        this.setContentPosistion();
+        document.addEventListener("click", this.onClickDocument);
+      });
+    },
+    closeContent() {
+      this.visible = false;
+      document.removeEventListener("click", this.onClickDocument);
+    },
+    setContentPosistion() {
+      let {
+        left,
+        top,
+        height,
+        width
+      } = this.$refs.trigger.getBoundingClientRect();
+      document.body.appendChild(this.$refs.content);
+      this.$refs.content.style.top = window.scrollY + top + height + "px";
+      this.$refs.content.style.left = window.scrollX + left + "px";
     }
   }
 };
