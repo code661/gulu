@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="onClick" ref="popover">
+  <div class="popover" @click="onClick">
     <div class="content-wrap" v-if="visible" ref="content">
       <slot name="content"></slot>
     </div>
@@ -18,22 +18,21 @@ export default {
   },
   methods: {
     onClick(event) {
-      if (this.$refs.trigger.contains(event.target)) {
-        if (this.visible === true) {
-          this.closeContent();
-        } else {
-          this.openContent();
-        }
+      if (this.visible) {
+        this.closeContent();
+      } else {
+        this.openContent();
       }
     },
     onClickDocument(event) {
       if (
-        this.$refs.content.contains(event.target) ||
-        this.$refs.trigger.contains(event.target)
+        !(
+          this.$refs.content.contains(event.target) ||
+          this.$refs.trigger.contains(event.target)
+        )
       ) {
-        return;
+        this.closeContent();
       }
-      this.closeContent();
     },
     openContent() {
       this.visible = true;
