@@ -55,38 +55,23 @@ export default {
       document.removeEventListener("click", this.onClickDocument);
     },
     setContentPosistion() {
-      let {
-        left,
-        right,
-        top,
-        height,
-        width,
-        bottom
-      } = this.$refs.trigger.getBoundingClientRect();
       document.body.appendChild(this.$refs.content);
-      console.log(this.$refs.trigger.getBoundingClientRect());
-      if (this.position === "top") {
-        this.$refs.content.style.top = window.scrollY + top + "px";
-        this.$refs.content.style.left = window.scrollX + left + "px";
-      }
-      if (this.position === "bottom") {
-        this.$refs.content.style.top = window.scrollY + bottom + "px";
-        this.$refs.content.style.left = window.scrollX + left + "px";
-      }
-
-      if (this.position === "left") {
-        let { height: height2 } = this.$refs.content.getBoundingClientRect();
-        this.$refs.content.style.top =
-          window.scrollY + top - (height2 - height) / 2 + "px";
-        this.$refs.content.style.left = window.scrollX + left + "px";
-      }
-
-      if (this.position === "right") {
-        let { height: height2 } = this.$refs.content.getBoundingClientRect();
-        this.$refs.content.style.top =
-          window.scrollY + top - (height2 - height) / 2 + "px";
-        this.$refs.content.style.left = window.scrollX + left + width + "px";
-      }
+      let {left, top, height, width } = this.$refs.trigger.getBoundingClientRect();
+      let { height: height2 } = this.$refs.content.getBoundingClientRect();
+      let positionTable = {
+        top: { top: window.scrollY + top, left: window.scrollX + left },
+        bottom: { top: window.scrollY + top + height, left: window.scrollX + left },
+        left: {
+          top: window.scrollY + top - (height2 - height) / 2,
+          left: window.scrollX + left
+        },
+        right: {
+          top: window.scrollY + top - (height2 - height) / 2,
+          left: window.scrollX + left + width
+        }
+      };
+      this.$refs.content.style.top = positionTable[this.position].top + "px";
+      this.$refs.content.style.left = positionTable[this.position].left + "px";
     }
   }
 };
