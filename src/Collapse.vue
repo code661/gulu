@@ -13,12 +13,13 @@ export default {
       default: false
     },
     value: {
-      type: [String, Number]
+      type: Array
     }
   },
   data() {
     return {
-      eventBus: new Vue()
+      eventBus: new Vue(),
+      valueCopy: null
     };
   },
   provide() {
@@ -26,11 +27,27 @@ export default {
       eventBus: this.eventBus
     };
   },
+  methods: {
+    addActiveItem(name) {
+      if (this.accordion) {
+        this.valueCopy = [];
+      }
+      this.valueCopy.push(name);
+      this.eventBus.$emit("updateActiveItem", this.valueCopy);
+      this.$emit("update:value", this.valueCopy);
+    },
+    removeActiveItem(name) {
+      let index = this.valueCopy.indexOf(name);
+      this.valueCopy.splice(index, 1);
+      this.eventBus.$emit("updateActiveItem", this.valueCopy);
+      this.$emit("update:value", this.valueCopy);
+    }
+  },
   mounted() {
-    this.eventBus.$emit("update:openItem", this.value)
-    this.eventBus.$on("update:openItem", (name)=>{
-      this.$emit("update:value", name)
-    })
+    this.valueCopy = JSON.parse(JSON.stringify(this.value));
+    this.eventBus.$emit("updateActiveItem", this.valueCopy);
+    this.eventBus.$on("addActiveItem", this.addActiveItem);
+    this.eventBus.$on("removeActiveItem", this.removeActiveItem);
   }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="collapse-item" @click="toggle">
     <div class="title">{{title}}</div>
-    <div class="content" v-show="open">
+    <div class="content" v-show="active">
       <slot></slot>
     </div>
   </div>
@@ -16,38 +16,32 @@ export default {
       type: String,
       required: true
     },
-    name:{
-      type: [Number, String],
+    name: {
+      type: String,
       required: true
     }
   },
   data() {
     return {
-      open: false,
+      active: false
     };
   },
   mounted() {
-    this.eventBus && this.eventBus.$on("update:openItem", name => {
-      if (name !== this.name) {
-        this.close();
-      }else{
-        this.show()
+    this.eventBus.$on("updateActiveItem", names => {
+      if (names.indexOf(this.name) >= 0) {
+        this.active = true;
+      } else {
+        this.active = false;
       }
     });
   },
   methods: {
     toggle() {
-      if (this.open) {
-        this.open = false;
+      if (this.active) {
+        this.eventBus.$emit("removeActiveItem", this.name);
       } else {
-        this.eventBus && this.eventBus.$emit("update:openItem", this.name);
+        this.eventBus.$emit("addActiveItem", this.name);
       }
-    },
-    close() {
-      this.open = false;
-    },
-    show(){
-      this.open = true
     }
   }
 };
