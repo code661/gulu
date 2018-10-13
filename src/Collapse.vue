@@ -28,6 +28,9 @@ export default {
   },
   mounted() {
     this.eventBus.$emit("update:openItem", this.value)
+    this.eventBus.$on("update:openItem", (name)=>{
+      this.$emit("update:value", name)
+    })
   }
 };
 </script>
