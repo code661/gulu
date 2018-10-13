@@ -1,5 +1,5 @@
 <template>
-  <div class="collapse-item" @click="open = !open">
+  <div class="collapse-item" @click="toggle">
     <div class="title">{{title}}</div>
     <div class="content" v-show="open">
       <slot></slot>
@@ -10,15 +10,44 @@
 <script>
 import Icon from "./Icon";
 export default {
+  inject: ["eventBus"],
   props: {
     title: {
       type: String,
       required: true
+    },
+    name:{
+      type: [Number, String],
+      required: true
     }
   },
-  data(){
-    return{
-      open: true
+  data() {
+    return {
+      open: false,
+    };
+  },
+  mounted() {
+    this.eventBus && this.eventBus.$on("update:openItem", name => {
+      if (name !== this.name) {
+        this.close();
+      }else{
+        this.show()
+      }
+    });
+  },
+  methods: {
+    toggle() {
+      if (this.open) {
+        this.open = false;
+      } else {
+        this.eventBus && this.eventBus.$emit("update:openItem", this.name);
+      }
+    },
+    close() {
+      this.open = false;
+    },
+    show(){
+      this.open = true
     }
   }
 };
@@ -33,7 +62,6 @@ export default {
   > .title {
     padding-left: 12px;
     line-height: 30px;
-    
   }
   > .content {
     border-top: 1px solid $border-color;
