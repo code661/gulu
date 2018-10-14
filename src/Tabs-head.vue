@@ -11,13 +11,13 @@
 <script>
 export default {
   name: "tabsHead",
-  inject: ["eventBus"],
+  inject: ["eventBus"]
 };
 </script>
 
 <style lang="scss" scoped>
 .tabs-head {
-  $tab-head-color: #9b9b9b;
+  $tab-head-color: #515a6e;
   $tab-head-height: 40px;
   $tab-font-size: 14px;
   color: $tab-head-color;
@@ -33,7 +33,7 @@ export default {
     bottom: -1px;
     left: 0;
     height: 2px;
-    background-color: #292929;
+    background-color: #4a90e2;
     transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
   > .actions-wrap {

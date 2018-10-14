@@ -11,23 +11,31 @@ export default {
     name: {
       type: [Number, String],
       required: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      isActive: false
+      active: false
     };
   },
   inject: ["eventBus", "direction"],
   methods: {
     handleClickTab() {
+      if (this.disabled) return;
       this.eventBus.$emit("update:selected", this.name);
       this.setBarPosition();
     },
     setBarPosition() {
       // 获取样式
       let { left, width, height, top } = this.$el.getBoundingClientRect();
-      let { left: parentLeft, top: parentTop } = this.$parent.$el.getBoundingClientRect();
+      let {
+        left: parentLeft,
+        top: parentTop
+      } = this.$parent.$el.getBoundingClientRect();
       // 修正偏移
       left -= parentLeft;
       top -= parentTop;
@@ -48,17 +56,18 @@ export default {
   created() {
     this.eventBus.$on("update:selected", name => {
       if (this.name === name) {
-        this.isActive = true;
+        this.active = true;
         this.setBarPosition();
       } else {
-        this.isActive = false;
+        this.active = false;
       }
     });
   },
   computed: {
     tabItemClasses() {
       return {
-        active: this.isActive
+        active: this.active,
+        disabled: this.disabled
       };
     }
   },
@@ -74,9 +83,13 @@ export default {
   padding: 0.5em 1em;
   cursor: pointer;
   &.active {
-    $active-color: #292525;
+    $active-color: #4a90e2;
     color: $active-color;
     font-weight: 500;
+  }
+  &.disabled {
+    color: #ccc;
+    cursor: not-allowed;
   }
 }
 </style>
