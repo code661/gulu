@@ -48,7 +48,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .tabs {
   display: flex;
   &.horizontal {
@@ -56,21 +56,6 @@ export default {
   }
   &.vertical {
     flex-direction: row;
-    > .tabs-head {
-      border-right: 1px solid;
-      border-bottom: none;
-      flex-direction: column;
-      height: auto;
-      padding-right: 0;
-      margin-bottom: 0;
-      > .active-bar {
-        width: 2px;
-        left: auto;
-        top: 0;
-        right: -1px;
-        bottom: auto;
-      }
-    }
   }
 }
 </style>

@@ -12,7 +12,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tabs-body {
-  margin-top: 1em;
+.tabs {
+  &.vertical {
+    > .tabs-body {
+      margin-left: 1em;
+    }
+  }
+  &.horizontal {
+    > .tabs-body {
+      margin-top: initial;
+      margin-top: 1em;
+    }
+  }
 }
 </style>
