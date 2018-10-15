@@ -1,6 +1,8 @@
 <template>
-  <div class="popover" @click="onClick">
-    <div class="content-wrap" v-if="visible" ref="content" :class="{[`position-${this.position}`]:true}">
+  <div class="popover" ref="popover">
+    <div class="content-wrap" v-if="visible" ref="content" :class="{[`position-${this.position}`]:true}"
+      @mouseenter="contentMouseenter"
+      @mouseleave="contentMouseleave">
       <slot name="content"></slot>
     </div>
     <span class="trigger-wrap" ref="trigger">
@@ -18,6 +20,13 @@ export default {
       validator(value) {
         return ["top", "bottom", "right", "left"].indexOf(value) >= 0;
       }
+    },
+    trigger: {
+      type: String,
+      default: "click",
+      validator(value) {
+        return ["click", "hover"].indexOf(value) >= 0;
+      }
     }
   },
   data() {
@@ -25,8 +34,47 @@ export default {
       visible: false
     };
   },
+  mounted() {
+    if (this.trigger === "click") {
+      this.$refs.popover.addEventListener("click", this.handleClick);
+    } else {
+      this.$refs.popover.addEventListener("mouseenter", this.handleMouseenter);
+      this.$refs.popover.addEventListener("mouseleave", this.handleMouseleave);
+    }
+  },
+  destroyed() {
+    if (this.trigger === "click") {
+      this.$refs.popover.removeEventListener("click", this.handleClick);
+    } else {
+      this.$refs.popover.removeEventListener("mouseenter");
+      this.$refs.popover.removeEventListener("mouseleave");
+    }
+  },
   methods: {
-    onClick(event) {
+    contentMouseleave() {
+      if (this.enterTimer) clearTimeout(this.enterTimer);
+      this.enterTimer = setTimeout(() => {
+        this.closeContent();
+      }, 100);
+    },
+    contentMouseenter() {
+      if (this.enterTimer) clearTimeout(this.enterTimer);
+    },
+    handleMouseenter() {
+      if (this.enterTimer) clearTimeout(this.enterTimer);
+      this.enterTimer = setTimeout(() => {
+        this.openContent();
+      }, 100);
+    },
+    handleMouseleave() {
+      if (this.enterTimer) {
+        clearTimeout(this.enterTimer);
+        this.enterTimer = setTimeout(() => {
+          this.closeContent();
+        }, 100);
+      }
+    },
+    handleClick(event) {
       if (this.visible) {
         this.closeContent();
       } else {
@@ -56,11 +104,19 @@ export default {
     },
     setContentPosistion() {
       document.body.appendChild(this.$refs.content);
-      let {left, top, height, width } = this.$refs.trigger.getBoundingClientRect();
+      let {
+        left,
+        top,
+        height,
+        width
+      } = this.$refs.trigger.getBoundingClientRect();
       let { height: height2 } = this.$refs.content.getBoundingClientRect();
       let positionTable = {
         top: { top: window.scrollY + top, left: window.scrollX + left },
-        bottom: { top: window.scrollY + top + height, left: window.scrollX + left },
+        bottom: {
+          top: window.scrollY + top + height,
+          left: window.scrollX + left
+        },
         left: {
           top: window.scrollY + top - (height2 - height) / 2,
           left: window.scrollX + left
