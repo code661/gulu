@@ -6,7 +6,7 @@ import Row from "../src/Row";
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
-describe("Col 组件", () => {
+describe("Row 组件", () => {
   it("存在.", () => {
     expect(Row).is.exist;
   });
