@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-pane" :class="{active: isActive}" v-show="isActive">
+  <div class="tabs-pane" :class="{active: active}" v-show="active">
     <slot></slot>
   </div>
 </template>
@@ -15,16 +15,16 @@ export default {
   },
   data() {
     return {
-      isActive: false
+      active: false
     };
   },
   inject: ["eventBus"],
   created() {
     this.eventBus.$on("update:selected", name => {
       if (this.name === name) {
-        this.isActive = true;
+        this.active = true;
       } else {
-        this.isActive = false;
+        this.active = false;
       }
     });
   }
@@ -32,6 +32,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.active{
-}
 </style>
