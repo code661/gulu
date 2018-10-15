@@ -5,9 +5,9 @@
         <div v-if="enableHtml" v-html="$slots.default[0]"></div>
         <slot v-else></slot>
       </div>
-      <div class="close-wrap" v-if="!autoClose || clickCloseBtton" >
+      <div class="close-wrap" v-if="!autoClose || closeButton" >
         <hr>
-        <span class="close-tip" @click="clickCloseBtton">{{closeButton.text || "关闭"}}</span>
+        <span class="close-tip" @click="clickCloseButton">{{closeButton.text || "关闭"}}</span>
       </div>
     </div>  
   </div>
@@ -23,12 +23,6 @@ export default {
     },
     closeButton: {
       type: Object,
-      default: () => {
-        return {
-          text: "关闭",
-          callBack: null
-        };
-      }
     },
     enableHtml: {
       type: Boolean,
@@ -46,7 +40,7 @@ export default {
     this.setAutoCloseTimer();
   },
   methods: {
-    clickCloseBtton() {
+    clickCloseButton() {
       this.close();
       if (this.closeButton && typeof this.closeButton.callBack === "function") {
         this.closeButton.callBack(this);
