@@ -26,7 +26,7 @@ export default {
   methods: {
     handleClickTab() {
       if (this.disabled) return;
-      this.eventBus.$emit("update:selected", this.name);
+      this.eventBus && this.eventBus.$emit("update:selected", this.name);
       this.$emit("click", this);
       this.setBarPosition();
     },
@@ -55,7 +55,7 @@ export default {
     }
   },
   created() {
-    this.eventBus.$on("update:selected", name => {
+    this.eventBus && this.eventBus.$on("update:selected", name => {
       if (this.name === name) {
         this.active = true;
         this.setBarPosition();
