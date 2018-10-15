@@ -7,7 +7,7 @@
       </div>
       <div class="close-wrap" v-if="!autoClose || closeButton" >
         <hr>
-        <span class="close-tip" @click="clickCloseButton">{{closeButton.text || "关闭"}}</span>
+        <span class="close-tip" @click="clickCloseButton">{{closeButton ? (closeButton.text ? closeButton.text : "关闭") : "关闭" }}</span>
       </div>
     </div>  
   </div>
@@ -22,7 +22,7 @@ export default {
       default: 5
     },
     closeButton: {
-      type: Object,
+      type: Object
     },
     enableHtml: {
       type: Boolean,
