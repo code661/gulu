@@ -1,5 +1,5 @@
 <template>
-  <button class="g-button" :class="{[`icon-${orientation}`]:true}" @click="$emit('click')">
+  <button class="g-button" :class="buttonClasses" @click="$emit('click')">
     <g-icon :name="icon" v-if="icon && !loading" class="icon"></g-icon>
     <g-icon name="loading" v-if="loading" class="icon loading"></g-icon>
     <div class="content">
@@ -15,6 +15,11 @@ export default {
   components: {
     "g-icon": Icon
   },
+  data() {
+    return {
+      iconOnly: false
+    };
+  },
   props: {
     icon: {},
     loading: {
@@ -27,6 +32,19 @@ export default {
       validator(value) {
         return ["left", "right"].indexOf(value) !== -1;
       }
+    }
+  },
+  created() {
+    if (!this.$slots.default) {
+      this.iconOnly = true;
+    }
+  },
+  computed: {
+    buttonClasses() {
+      return {
+        [`icon-${this.orientation}`]: true,
+        "icon-only": this.iconOnly
+      };
     }
   }
 };
@@ -70,7 +88,7 @@ $border-color-hover: #666;
   }
   &:focus {
     outline: none;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,.2)
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
   }
   > .icon {
     order: 1;
@@ -91,6 +109,11 @@ $border-color-hover: #666;
   }
   > .loading {
     animation: spin 1s linear infinite;
+  }
+  &.icon-only {
+    > .icon {
+      margin-right: 0;
+    }
   }
 }
 </style>
