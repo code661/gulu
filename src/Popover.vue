@@ -169,10 +169,12 @@ export default {
     &::before {
       border-top-color: #666;
       top: calc(100% + 1px);
+      border-bottom: none;
     }
     &::after {
       border-top-color: #fff;
       top: calc(100%);
+      border-bottom: none;
     }
   }
 
@@ -181,10 +183,12 @@ export default {
     &::before {
       border-bottom-color: #666;
       bottom: calc(100% + 1px);
+      border-top: none;
     }
     &::after {
       border-bottom-color: #fff;
       bottom: calc(100%);
+      border-top: none;
     }
   }
   &.position-left {
@@ -195,6 +199,7 @@ export default {
       left: 100%;
       top: 50%;
       transform: translateY(-50%);
+      border-right: none;
     }
     &::before {
       border-left-color: #666;
@@ -213,6 +218,7 @@ export default {
       right: 100%;
       top: 50%;
       transform: translateY(-50%);
+      border-left: none;
     }
     &::before {
       border-right-color: #666;
