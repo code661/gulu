@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="handleClickTab" :class="tabItemClasses">
+  <div class="tabs-item" @click="handleClickTab" :class="tabItemClasses" :data-name="name">
     <slot></slot>
   </div>
 </template>
@@ -27,6 +27,7 @@ export default {
     handleClickTab() {
       if (this.disabled) return;
       this.eventBus.$emit("update:selected", this.name);
+      this.$emit("click", this);
       this.setBarPosition();
     },
     setBarPosition() {
