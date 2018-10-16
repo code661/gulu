@@ -1,15 +1,15 @@
 <template>
   <div class="wrapper" :class="{error:error}">
     <input type="text"
-      :value="value" :disabled="disabled" :readOnly="readonly"
+      :value="value" :disabled="disabled" :readOnly="readonly" :placeholder="placeholder"
       @change="$emit('change', $event.target.value)"
       @blur="$emit('blur', $event.target.value)"
       @input="$emit('input', $event.target.value)"
       @focus="$emit('focus', $event.target.value)"
     >
     <template v-if="error">
-      <g-icon class="error-msg icon" name="warning-ring"></g-icon>
-      <span class="error-msg content">{{error}}</span>
+      <g-icon class="error-msg icon" name="bell"></g-icon>
+      <span class="error-msg inputContent">{{error}}</span>
     </template>
   </div>
 </template>
@@ -22,6 +22,7 @@ export default {
   },
   props: {
     value: String,
+    placeholder: String,
     disabled: {
       type: Boolean,
       default: false
@@ -89,7 +90,7 @@ $error-red: #ed4014;
     margin-left: 8px;
     font-size: 1em;
   }
-  &.content {
+  &.inputContent {
     margin-left: 4px;
   }
 }
