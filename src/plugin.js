@@ -1,4 +1,4 @@
-import Toast from "./Toast";
+import Toast from "./toast";
 let currentToast = null;
 export default {
   install(Vue, options) {

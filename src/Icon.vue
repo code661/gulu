@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import './iconSvg.js'
+import './icon-svg.js'
 export default {
   props:["name"]
 };
