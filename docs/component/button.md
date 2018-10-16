@@ -92,7 +92,7 @@ export default {
 
 | 属性 | 说明 | 类型 | 默认值 |
 | :-- | :-- | :-- | :-- |
-| icon | 设置按钮的图标类型<span class="Apple-tab-span" style="white-space:pre"></span> | String  | - |
+| icon | 设置按钮的图标类型| String  | - |
 | orientation | 设置图标和文字之间的显示位置 | String | left |
 | loading | 设置按钮为加载中状态 | Boolean | false |
 

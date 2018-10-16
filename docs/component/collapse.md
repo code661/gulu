@@ -54,7 +54,7 @@
 
 | 属性 | 说明 | 类型 | 默认值 |
 | :-- | :-- | :-- | :-- |
-| value | 当前激活的面板的 name<span class="Apple-tab-span" style="white-space:pre"></span> | Array  | - |
+| value | 当前激活的面板的 name | Array  | - |
 | accordion | 是否开启手风琴模式，开启后每次至多展开一个面板 | Boolean | false |
 
 ### Collapse-item props
