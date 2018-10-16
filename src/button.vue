@@ -2,16 +2,15 @@
   <button class="g-button" :class="buttonClasses" @click="$emit('click')">
     <g-icon :name="icon" v-if="icon && !loading" class="icon"></g-icon>
     <g-icon name="loading" v-if="loading" class="icon loading"></g-icon>
-    <div class="content">
+    <div class="buttonContent">
       <slot></slot>
     </div>
   </button>
-  </button>
 </template>
-
 <script>
-import Icon from "./Icon";
+import Icon from "./icon";
 export default {
+  name: "GuluButton",
   components: {
     "g-icon": Icon
   },
@@ -21,7 +20,9 @@ export default {
     };
   },
   props: {
-    icon: {},
+    icon: {
+      type: String
+    },
     loading: {
       type: Boolean,
       default: false
@@ -30,11 +31,12 @@ export default {
       type: String,
       default: "left",
       validator(value) {
-        return ["left", "right"].indexOf(value) !== -1;
+        return value === "left" || value === "right";
+        // return ["left", "right"].indexOf(value) >= 0;
       }
     }
   },
-  created() {
+  mounted() {
     if (!this.$slots.default) {
       this.iconOnly = true;
     }
@@ -43,7 +45,7 @@ export default {
     buttonClasses() {
       return {
         [`icon-${this.orientation}`]: true,
-        "icon-only": this.iconOnly
+        ["icon-only"]: this.iconOnly
       };
     }
   }
@@ -94,7 +96,7 @@ $border-color-hover: #666;
     order: 1;
     margin-right: 0.3em;
   }
-  > .content {
+  > .buttonContent {
     order: 2;
   }
   &.icon-right {
@@ -103,7 +105,7 @@ $border-color-hover: #666;
       margin-right: 0;
       margin-left: 0.3em;
     }
-    > .content {
+    > .buttonContent {
       order: 1;
     }
   }
