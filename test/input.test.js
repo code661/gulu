@@ -6,9 +6,7 @@ Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe("Input 组件", () => {
-  it("input 存在.", () => {
-    expect(Input).is.exist;
-  });
+  it("input 存在.", () => {});
   describe("props", () => {
     const Constructor = Vue.extend(Input);
     let input;
@@ -55,28 +53,45 @@ describe("Input 组件", () => {
       let useElement = input.$el.querySelector("use");
       let spanElement = input.$el.querySelector("span");
       let href = useElement.getAttribute("xlink:href");
-      expect(href).to.equal("#i-warning-ring");
+      expect(href).to.equal("#i-bell");
       expect(spanElement.innerText).to.equal("msg");
     });
   });
   describe("支持change/blur/input/focus事件", () => {
     ["change", "blur", "input", "focus"].map(eventName => {
-      it(eventName, () => {
-        const Constructor = Vue.extend(Input);
-        const input = new Constructor({
-          propsData: {
-            value: "hello"
-          }
+      if (eventName === "input") {
+        it(eventName, () => {
+          const Constructor = Vue.extend(Input);
+          const input = new Constructor({
+            propsData: {
+              value: "hello"
+            }
+          });
+          input.$mount();
+          const spy = sinon.fake();
+          input.$on(eventName, spy);
+          let event = new Event(eventName);
+          let inputElement = input.$el.querySelector("input");
+          inputElement.dispatchEvent(event);
+          expect(spy).have.been.calledWith("hello");
         });
-        input.$mount();
-        const spy = sinon.fake();
-        input.$on(eventName, spy);
-        let event = new Event(eventName);
-        let inputElement = input.$el.querySelector("input");
-        inputElement.dispatchEvent(event);
-        expect(spy).have.been.calledWith("hello");
-        input.$mount();
-      });
+      } else {
+        it(eventName, () => {
+          const Constructor = Vue.extend(Input);
+          const input = new Constructor({
+            propsData: {
+              value: "hello"
+            }
+          });
+          input.$mount();
+          const spy = sinon.fake();
+          input.$on(eventName, spy);
+          let event = new Event(eventName);
+          let inputElement = input.$el.querySelector("input");
+          inputElement.dispatchEvent(event);
+          expect(spy).have.been.calledWith(event);
+        });
+      }
     });
   });
 });
