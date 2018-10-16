@@ -12,7 +12,10 @@ module.exports = {
         title: "组件",
         children: [
           "/component/button",
-         "/component/tabs"
+          "/component/input",
+          "/component/tabs",
+          "/component/popover",
+          "/component/collapse"
         ]
       }
     ]
