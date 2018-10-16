@@ -58,12 +58,6 @@ export default {
 <g-button icon="warning-circle"></g-button>
 <g-button icon="wechat"></g-button>
 <g-button icon="wechat-pay"></g-button>  
-
-<script>
-export default {
-
-};
-</script>
 ```
 
 ### 3. 按钮组
@@ -75,15 +69,15 @@ export default {
   </ClientOnly>
 
 ```vue
-<w-button-group class="groupItem">
-  <w-button icon="left">上一页</w-button>
-  <w-button icon="right" icon-position="right">下一页</w-button>
-</w-button-group>
-<w-button-group>
-  <w-button icon="share"></w-button>
-  <w-button icon="edit"></w-button>
-  <w-button icon="delete"></w-button>
-</w-button-group>
+<g-button-group class="groupItem">
+  <g-button icon="left">上一页</g-button>
+  <g-button icon="right" icon-position="right">下一页</g-button>
+</g-button-group>
+<g-button-group>
+  <g-button icon="share"></g-button>
+  <g-button icon="edit"></g-button>
+  <g-button icon="delete"></g-button>
+</g-button-group>
 ```
 
 ## API
@@ -110,7 +104,7 @@ export default {
 先引入`<Icon />`组件，指定图标对应的 `name` 属性，示例代码：
 
 ```html
-<Icon name="ios-checkmark" />
+<Icon name="settings" />
 ```
 
 
