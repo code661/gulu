@@ -52,12 +52,14 @@ export default {
   },
   methods: {
     contentMouseleave() {
+      if(this.trigger === "click") {return}
       if (this.enterTimer) clearTimeout(this.enterTimer);
       this.enterTimer = setTimeout(() => {
         this.closeContent();
       }, 100);
     },
     contentMouseenter() {
+      if(this.trigger === "click") {return}
       if (this.enterTimer) clearTimeout(this.enterTimer);
     },
     handleMouseenter() {
@@ -154,6 +156,7 @@ export default {
   padding: 0.5em 1em;
   word-break: break-all;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+  z-index: 1;
   &::before,
   &::after {
     content: "";
