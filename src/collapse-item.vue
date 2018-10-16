@@ -1,7 +1,7 @@
 <template>
   <div class="collapse-item" @click="toggle">
     <div class="title">{{title}}</div>
-    <div class="content" v-show="active">
+    <div class="collapseContent" v-show="active">
       <slot></slot>
     </div>
   </div>
@@ -17,7 +17,7 @@ export default {
       required: true
     },
     name: {
-      type: String,
+      type: [String, Number],
       required: true
     }
   },
@@ -57,13 +57,13 @@ export default {
     padding-left: 12px;
     line-height: 30px;
   }
-  > .content {
+  > .collapseContent {
     border-top: 1px solid $border-color;
     background-color: white;
     padding: 12px;
   }
   &:last-child {
-    > .content {
+    > .collapseContent {
       border-radius: 0 0 3px 3px;
     }
   }
