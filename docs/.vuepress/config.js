@@ -13,6 +13,7 @@ module.exports = {
         children: [
           "/component/button",
           "/component/input",
+          "/component/layout",
           "/component/tabs",
           "/component/popover",
           "/component/toast",
@@ -20,5 +21,5 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
 };
