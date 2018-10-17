@@ -15,6 +15,7 @@ module.exports = {
           "/component/input",
           "/component/tabs",
           "/component/popover",
+          "/component/toast",
           "/component/collapse"
         ]
       }
