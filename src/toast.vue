@@ -138,10 +138,10 @@ export default {
     display: flex;
     .message-wrap {
       max-width: 250px;
-      padding: 8px 16px;
+      padding: 8px;
+      flex-wrap: wrap;
     }
     .close-wrap {
-      flex-shrink: 0;
       display: flex;
       hr {
         border: none;
@@ -151,9 +151,12 @@ export default {
       }
       .close-tip {
         display: flex;
-        padding: 0 16px;
+        padding: 8px;
         align-items: center;
         cursor: pointer;
+        min-width: 2em;
+        max-width: 4em;
+        text-align: center;
       }
     }
   }
