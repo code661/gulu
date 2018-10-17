@@ -4,7 +4,7 @@
 [![NPM version][npm-image]][npm-url]
 [![npm license][license-image]][download-url]
 
-[npm-image]: https://img.shields.io/npm/v/wish-ui.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/wish-ui.svg
 [npm-url]: https://npmjs.org/package/wish-ui
 [download-url]: https://npmjs.org/package/wish-ui
 [license-image]: https://img.shields.io/npm/l/wish-ui.svg
