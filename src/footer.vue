@@ -5,10 +5,11 @@
 </template>
 
 <script>
-export default {
-  
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
+.footer {
+  padding: 24px 50px;
+}
 </style>
