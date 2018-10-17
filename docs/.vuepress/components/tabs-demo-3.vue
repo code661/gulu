@@ -1,6 +1,6 @@
 <template>
   <div class="demoWrap">
-    <g-tabs selected="1">
+    <g-tabs selected="1" direction="vertical">
       <g-tabs-head>
         <g-tabs-item name="1">标签一</g-tabs-item>
         <g-tabs-item name="2">标签二</g-tabs-item>

@@ -3,7 +3,7 @@
     <g-tabs selected="1">
       <g-tabs-head>
         <g-tabs-item name="1">标签一</g-tabs-item>
-        <g-tabs-item name="2">标签二</g-tabs-item>
+        <g-tabs-item name="2" disabled>标签二</g-tabs-item>
         <g-tabs-item name="3">标签三</g-tabs-item>
       </g-tabs-head>
       <g-tabs-body>
