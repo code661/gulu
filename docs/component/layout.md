@@ -14,9 +14,11 @@
 采用 flex 布局实现，请注意[浏览器兼容性](https://caniuse.com/#search=flex)问题。
 :::
 
-## 代码实例
+## 代码示例
 
-### 典型的页面布局
+### 1. 上中下布局
+
+通常将内容放在固定尺寸（例如：1200px）内，整个页面排版稳定
 
 <ClientOnly>
 <layout-demo-1></layout-demo-1>
@@ -29,6 +31,10 @@
   <g-footer>Footer</g-footer>
 </g-layout>
 ```
+
+### 2. 顶部-侧边布局-通栏
+
+同样拥有顶部导航及侧边栏，区别是两边未留边距，多用于应用型的网站。
 
 <ClientOnly>
 <layout-demo-2></layout-demo-2>
@@ -45,9 +51,14 @@
 </g-layout>
 ```
 
+### 3.顶部-侧边布局
+
+拥有顶部导航及侧边栏的页面，多用于展示类网站。
+
 <ClientOnly>
 <layout-demo-3></layout-demo-3>
 </ClientOnly>
+
 
 ```vue
 <g-layout class="g-layout">

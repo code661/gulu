@@ -122,7 +122,7 @@ $toast接口使用方法： `$toast(message,props)`
   - 说明：描述弹出框 toast 的对象，详细属性/方法（Attribute）如下：
 
   | 参数 | 说明 | 类型 | 默认值 |
-  | ---- |:----|:----|:----|
+  | -- |:--|:--|:--|
   | position | 描述toast弹出方位，可选值有:`top` `middle` `botttom` | String | top |
   | autoClose | 选择是否自动关闭或延迟关闭事件 | false,Number | 5 |
   | closeButton | 描述关闭按钮信息，当 autoClose 为 false 时，关闭按钮即出现 | Object | - |
