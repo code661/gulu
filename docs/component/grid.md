@@ -60,7 +60,39 @@
 <grid-demo-2></grid-demo-2>
 </ClientOnly>
 
-### 3. 区块间隔
+
+### 3. Flex 布局
+通过给 `row` 设置参数 `align` 为不同的值，来定义子元素的排布方式。
+
+<ClientOnly>
+<grid-demo-5></grid-demo-5>
+</ClientOnly>
+
+```vue
+<p>子元素向左排列</p>
+<g-row align="left">
+  <g-col span="4">col-4</g-col>
+  <g-col span="4">col-4</g-col>
+  <g-col span="4">col-4</g-col>
+  <g-col span="4">col-4</g-col>
+</g-row>
+<p>子元素向右排列</p>
+<g-row align="right">
+  <g-col span="4">col-4</g-col>
+  <g-col span="4">col-4</g-col>
+  <g-col span="4">col-4</g-col>
+  <g-col span="4">col-4</g-col>
+</g-row>
+<p>子元素居中排列</p>
+<g-row align="center">
+  <g-col span="4">col-4</g-col>
+  <g-col span="4">col-4</g-col>
+  <g-col span="4">col-4</g-col>
+  <g-col span="4">col-4</g-col>
+</g-row>
+```
+
+### 4. 区块间隔
 
 通过给 `row` 添加 `gutter` 属性，可以给下属的 `col` 添加间距，推荐使用 `(16+8n)px` 作为栅格间隔。
 
@@ -77,7 +109,7 @@
 </g-row>
 ```
 
-### 4. 响应式布局
+### 5. 响应式布局
 
 参照 Bootstrap 的 响应式设计，预设四个响应尺寸：xs sm md lg，详见 API。
 
@@ -102,6 +134,8 @@
 | 属性 | 说明 | 类型 | 默认值 |
 | :-- | :-- | :-- | :-- |
 | gutter | 栅格间距，单位 px，左右平分	| Number  | 0 |
+| align | 子元素的水平排列方式，可选值为`start`、`end`、`center`	| String  | - |
+
 
 ### Col props
 
