@@ -14,10 +14,11 @@ module.exports = {
           "/component/button",
           "/component/input",
           "/component/layout",
+          "/component/grid",
           "/component/tabs",
           "/component/popover",
           "/component/toast",
-          "/component/collapse"
+          "/component/collapse",
         ]
       }
     ]
