@@ -1,5 +1,6 @@
 module.exports = {
   title: "轱辘UI",
+  base: "/gulu/",
   description: "一个基于Vue 2.x 的前端UI组件库",
   themeConfig: {
     nav: [
