@@ -11,7 +11,7 @@ import Content from "./content"
 import Footer from "./footer"
 import Sider from "./sider"
 import Toast from "./toast"
-import plugin from "./plugin"
+import toastPlugin from "./toast-plugin"
 import Tabs from "./tabs"
 import TabsHead from "./tabs-head"
 import TabsItem from "./tabs-item"
@@ -21,7 +21,7 @@ import Popover from "./popover"
 import Collapse from "./collapse"
 import CollapseItem from "./collapse-item"
 
-Vue.use(plugin)
+Vue.use(toastPlugin)
 Vue.component("g-button", Button);
 Vue.component("g-icon", Icon);
 Vue.component("g-button-group", buttonGroup);
