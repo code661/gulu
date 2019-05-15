@@ -19,5 +19,6 @@ import TabsPane from "./src/tabs-pane"
 import Popover from "./src/popover"
 import Collapse from "./src/collapse"
 import CollapseItem from "./src/collapse-item"
+import Toggle from "./src/toggle"
 
-export {Button, ButtonGroup, Icon, Input, Col, Row, Layout, Header, Header, Footer, Sider, Toast, toastPlugin, Tabs, TabsHead, TabsItem, TabsBody, TabsPane, Popover, Collapse, CollapseItem}
+export {Button, ButtonGroup, Icon, Input, Col, Row, Layout, Header, Header, Footer, Sider, Toast, toastPlugin, Tabs, TabsHead, TabsItem, TabsBody, TabsPane, Popover, Collapse, CollapseItem, Toggle}
