@@ -1,7 +1,18 @@
 <template>
-  <div class="collapse-item" @click="toggle">
-    <div class="title">{{title}}</div>
-    <div class="collapseContent" v-show="active">
+  <div class="collapse-item">
+    <div class="title" @click.stop="toggle">
+      <span>{{ title }}</span>
+      <Icon
+        class="collapse-item__arrow"
+        :class="{ active: !this.active }"
+        name="right"
+      />
+    </div>
+    <div
+      class="collapseContent"
+      :class="{ inactive: !this.active }"
+      ref="collapseContent"
+    >
       <slot></slot>
     </div>
   </div>
@@ -10,6 +21,9 @@
 <script>
 import Icon from "./icon";
 export default {
+  components: {
+    Icon
+  },
   inject: ["eventBus"],
   props: {
     title: {
@@ -28,12 +42,15 @@ export default {
   },
   mounted() {
     this.eventBus.$on("updateActiveItem", names => {
-      if (names.indexOf(this.name) >= 0) {
-        this.active = true;
-      } else {
-        this.active = false;
-      }
+      if (names.indexOf(this.name) >= 0) this.active = true;
+      else this.active = false;
     });
+  },
+  watch: {
+    active(newValue) {
+      if (newValue) this.expand();
+      else this.collapse();
+    }
   },
   methods: {
     toggle() {
@@ -42,6 +59,20 @@ export default {
       } else {
         this.eventBus.$emit("addActiveItem", this.name);
       }
+    },
+    collapse() {
+      var element = this.$refs.collapseContent;
+      var scrollHeight = element.scrollHeight;
+      requestAnimationFrame(() => {
+        element.style.height = scrollHeight + "px";
+        requestAnimationFrame(() => {
+          element.style.height = 0 + "px";
+        });
+      });
+    },
+    expand() {
+      var element = this.$refs.collapseContent;
+      element.style.height = element.scrollHeight + "px";
     }
   }
 };
@@ -53,14 +84,35 @@ export default {
   &:not(:first-child) {
     border-top: 1px solid $border-color;
   }
+
+  &__arrow {
+    &.active {
+      transform: rotate(90deg);
+    }
+    transition: transform 0.3s;
+  }
   > .title {
-    padding-left: 12px;
+    padding: 0 12px;
     line-height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   > .collapseContent {
+    &.inactive {
+      height: 0;
+    }
+    transition: height 0.3s ease-in-out 0s, padding-top 0.3s ease-in-out 0s,
+      padding-bottom 0.3s ease-in-out 0s;
     border-top: 1px solid $border-color;
     background-color: white;
-    padding: 12px;
+    overflow: hidden;
+    height: auto;
+
+    > * {
+      padding: 12px;
+    }
   }
   &:last-child {
     > .collapseContent {
