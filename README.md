@@ -1,6 +1,6 @@
 # Wish-UI
 
-[![Build Status](https://travis-ci.org/code661/gulu.svg?branch=master)](https://travis-ci.org/code661/gulu)
+[![Build Status](https://api.travis-ci.com/code661/gulu.svg?branch=master)](https://travis-ci.org/code661/gulu)
 [![NPM version][npm-image]][npm-url]
 [![npm license][license-image]][download-url]
 
