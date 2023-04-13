@@ -78,28 +78,28 @@ export default {
   $class-prefix: col-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
-      width: ($n / 24) * 100%;
+      width: (calc($n / 24)) * 100%;
     }
   }
 
   $class-prefix: offset-;
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
-      margin-left: ($n / 24) * 100%;
+      margin-left: (calc($n / 24)) * 100%;
     }
   }
   @media (min-width: 576px) {
     $class-prefix: pad-col-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
+        width: (calc($n / 24)) * 100%;
       }
     }
 
     $class-prefix: pad-offset-;
     @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
-        margin-left: ($n / 24) * 100%;
+        margin-left: (calc($n / 24)) * 100%;
       }
     }
   }
@@ -108,14 +108,14 @@ export default {
     $class-prefix: narrowPc-col-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
+        width: (calc($n / 24)) * 100%;
       }
     }
 
     $class-prefix: narrowPc-offset-;
     @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
-        margin-left: ($n / 24) * 100%;
+        margin-left: (calc($n / 24)) * 100%;
       }
     }
   }
@@ -124,14 +124,14 @@ export default {
     $class-prefix: pc-col-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
+        width: (calc($n / 24)) * 100%;
       }
     }
 
     $class-prefix: pc-offset-;
     @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
-        margin-left: ($n / 24) * 100%;
+        margin-left: (calc($n / 24)) * 100%;
       }
     }
   }
@@ -140,14 +140,14 @@ export default {
     $class-prefix: widePc-col-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
+        width: (calc($n / 24)) * 100%;
       }
     }
 
     $class-prefix: widePc-offset-;
     @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
-        margin-left: ($n / 24) * 100%;
+        margin-left: (calc($n / 24)) * 100%;
       }
     }
   }
@@ -156,14 +156,14 @@ export default {
     $class-prefix: ultraWidePc-col-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
+        width: (calc($n / 24)) * 100%;
       }
     }
 
     $class-prefix: ultraWidePc-offset-;
     @for $n from 0 through 24 {
       &.#{$class-prefix}#{$n} {
-        margin-left: ($n / 24) * 100%;
+        margin-left: (calc($n / 24)) * 100%;
       }
     }
   }

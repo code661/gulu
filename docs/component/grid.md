@@ -149,4 +149,4 @@
 | widePc | `<1200px` 响应式栅格，一个包含`offset`或`span`属性的对象	| Object  | 0 |
 | ultraWidePc | `<1600px` 响应式栅格，一个包含`offset`或`span`属性的对象	| Object  | 0 |
 
-> 注：这是一个mobile frist Design，默认span、offset为手机的样式设置。
+> 注：这是一个mobile first Design，默认span、offset为手机的样式设置。
